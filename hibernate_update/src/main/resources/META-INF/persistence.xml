@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+	version="2.2">
+	
+	<persistence-unit name="persistenceUnit"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<!-- other entity classes if needed -->
+
+		<properties>
+			<!-- database config and JPA provider (Hibernate) -->
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://localhost:3306/empresa?createDatabaseIfNotExist=true" />
+			<property name="javax.persistence.jdbc.user" value="robynng" />
+			<property name="javax.persistence.jdbc.password"
+				value="1234" />
+			<property name="javax.persistence.jdbc.driver"
+				value="com.mysql.cj.jdbc.Driver" />
+
+			<!-- Hibernate config -->
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+
+			<!-- transaction management config -->
+			<property name="hibernate.transaction.jta.platform"
+				value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />
+			<property name="hibernate.connection.release_mode"
+				value="auto" />
+			<property name="hibernate.current_session_context_class"
+				value="thread" />
+		</properties>
+	</persistence-unit>
+</persistence>
